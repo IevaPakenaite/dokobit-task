@@ -1,0 +1,61 @@
+@use "../../../../scss/variables" as *;
+
+.comment {
+  display: flex;
+
+  .container {
+    width: -webkit-fill-available;
+    padding: $spacing;
+    border-radius: $border-radius;
+    color: $black;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &:hover {
+      background-color: $white;
+
+      .header .menu {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      width: -webkit-fill-available;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .username {
+        font-weight: 500;
+        color: $black;
+      }
+
+      .timestamp {
+        color: $grey;
+        font-weight: 400;
+        font-size: 1.2rem;
+      }
+    }
+
+    .message {
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      width: 23.8rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+}

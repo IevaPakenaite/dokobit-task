@@ -1,0 +1,11 @@
+@use "../../scss/variables.scss" as *;
+
+.card {
+  display: flex;
+  border-radius: $border-radius;
+  height: 65.6rem;
+  width: 42.6rem;
+  box-shadow: 0rem 1rem 1.5rem -0.3rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: $spacing * 3;
+}

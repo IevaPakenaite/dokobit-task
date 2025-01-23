@@ -1,0 +1,6 @@
+@use "../../../../scss/variables" as *;
+
+.comments-list {
+  overflow-y: auto;
+  padding: $spacing * 3 $spacing * 3 $spacing * 3 $spacing * 2;
+}

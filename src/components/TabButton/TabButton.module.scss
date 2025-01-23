@@ -1,0 +1,46 @@
+@use "../../scss/variables.scss" as *;
+
+.tab-button {
+  height: 8rem;
+  width: 8.5rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: white;
+  color: $grey;
+  padding: 0;
+
+  .icon {
+    height: 2.4rem;
+    width: 2.4rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .label {
+    color: $black;
+    font-size: 1.2rem;
+  }
+
+  &.selected {
+    background-color: $orange-light;
+    color: $orange;
+
+    .label {
+      font-weight: 700;
+      color: $orange;
+    }
+  }
+
+  &:hover {
+    color: $orange;
+    transition: color 0.1s ease-in;
+
+    .label {
+      color: $orange;
+      transition: color 0.1s ease-in;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@use "../../scss/variables.scss" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  border-left: $border-separator;
+}

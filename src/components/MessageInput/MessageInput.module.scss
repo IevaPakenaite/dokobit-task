@@ -1,0 +1,11 @@
+@use "../../scss/variables.scss" as *;
+
+.message-input {
+  border-radius: 1.7rem;
+  flex-grow: 1;
+  height: 3.6rem;
+  font-size: 1.5rem;
+  padding: $spacing;
+  border: none;
+  background-color: $white;
+}

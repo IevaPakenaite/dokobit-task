@@ -1,0 +1,17 @@
+@use "../../scss/variables.scss" as *;
+
+.avatar {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: $purple;
+  color: $white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: $spacing;
+}

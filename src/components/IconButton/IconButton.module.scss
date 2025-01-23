@@ -1,0 +1,30 @@
+@use "../../scss/variables.scss" as *;
+
+.icon-button {
+  border-radius: 50%;
+
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  border: none;
+
+  &.primary {
+    color: $white;
+    background-color: $orange;
+  }
+  &.secondary {
+    color: $grey;
+    background-color: transparent;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
