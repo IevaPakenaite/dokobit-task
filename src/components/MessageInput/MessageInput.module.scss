@@ -8,4 +8,10 @@
   border: none;
   background-color: $grey-light;
   resize: none;
+  width: -webkit-fill-available;
+
+  &.secondary {
+    background-color: $white;
+    font-size: 1.2rem;
+  }
 }

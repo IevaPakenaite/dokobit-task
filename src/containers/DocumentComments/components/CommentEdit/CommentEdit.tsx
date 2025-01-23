@@ -5,7 +5,7 @@ import Avatar from "../../../../components/Avatar";
 import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel";
 import MessageInput from "../../../../components/MessageInput";
 
-import styles from "../Comment/Comment.module.scss";
+import styles from "./CommentEdit.module.scss";
 
 interface CommentProps {
   comment: DokobitDocumentComment;
@@ -75,6 +75,7 @@ function Comment({ comment, onSave, onCancel }: CommentProps) {
           }
           onEnterPress={handleEnterPress}
           placeholder="Update your comment here"
+          isSecondary
         />
       </div>
     </div>

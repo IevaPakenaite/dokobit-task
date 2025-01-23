@@ -16,11 +16,6 @@
 
     &:hover {
       background-color: $grey-light;
-
-      .header .menu {
-        display: flex;
-        justify-content: space-between;
-      }
     }
 
     .header {
@@ -36,7 +31,8 @@
       }
 
       .menu {
-        display: none;
+        display: flex;
+        justify-content: space-between;
       }
 
       .username {
@@ -58,6 +54,10 @@
       width: 23.8rem;
       word-break: break-word;
       overflow-wrap: break-word;
+    }
+
+    &.edit {
+      background-color: $grey-light;
     }
   }
 }
