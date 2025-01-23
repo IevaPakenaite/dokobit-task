@@ -28,6 +28,16 @@ function DocumentComments() {
     setComments([...comments, newComment]);
   }
 
+  function handleUpdateComment(updatedComment: DokobitDocumentComment) {
+    const newList = comments.map((comment) =>
+      comment.id === updatedComment.id
+        ? { ...comment, text: updatedComment.text }
+        : comment
+    );
+
+    setComments(newList);
+  }
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -45,7 +55,11 @@ function DocumentComments() {
     <ContentView header="Comments">
       <div className={styles["document-comments"]}>
         {comments?.length ? (
-          <CommentsList comments={comments} onDelete={openModal} />
+          <CommentsList
+            comments={comments}
+            onDelete={openModal}
+            onUpdate={handleUpdateComment}
+          />
         ) : (
           <EmptyList
             message="No comments yet"

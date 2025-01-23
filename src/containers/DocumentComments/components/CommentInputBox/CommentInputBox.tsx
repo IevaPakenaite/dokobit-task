@@ -18,12 +18,13 @@ function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
   function handleAddComment() {
     if (!!newComment) {
       const trimmedComment = newComment.trim();
+
       if (!!trimmedComment) {
         onAddComment({
           id: uuidv4(),
           addedBy: "Vardenis Pavardenis",
           addedOn: format(new Date(), "yyyy-MM-dd HH:mm"),
-          text: newComment.trim(),
+          text: trimmedComment,
         });
       }
       setNewComment("");
@@ -32,7 +33,7 @@ function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
     return;
   }
 
-  function handleEnterPress(e: React.KeyboardEvent<HTMLInputElement>) {
+  function handleEnterPress(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === "Enter" && e.shiftKey === false) {
       e.preventDefault();
 
@@ -46,10 +47,11 @@ function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
     <div data-cy="comment-input-box" className={styles["comment-input-box"]}>
       <MessageInput
         value={newComment}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           setNewComment(e.target.value)
         }
         onEnterPress={handleEnterPress}
+        maxRows={5}
         placeholder="Type a comment"
       />
       <IconButton icon={faArrowUp} onClick={handleAddComment} />

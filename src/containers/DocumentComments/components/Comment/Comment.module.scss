@@ -15,7 +15,7 @@
     gap: $spacing * 0.5;
 
     &:hover {
-      background-color: $white;
+      background-color: $grey-light;
 
       .header .menu {
         display: flex;
@@ -58,6 +58,10 @@
       width: 23.8rem;
       word-break: break-word;
       overflow-wrap: break-word;
+    }
+
+    &.edit {
+      background-color: $grey-light;
     }
   }
 }

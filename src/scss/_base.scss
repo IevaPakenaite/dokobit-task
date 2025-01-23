@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  *:focus {
+    outline-color: $orange;
+  }
 }
 
 html {

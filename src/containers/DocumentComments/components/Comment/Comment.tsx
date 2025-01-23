@@ -10,9 +10,10 @@ interface CommentProps {
   comment: DokobitDocumentComment;
   isLast: boolean;
   onDelete: () => void;
+  onEdit: (id: string) => void;
 }
 
-function Comment({ comment, isLast, onDelete }: CommentProps) {
+function Comment({ comment, isLast, onDelete, onEdit }: CommentProps) {
   return (
     <div data-cy="comment" className={styles.comment}>
       <Avatar name="Vardenis" surname="Pavardenis" />
@@ -29,7 +30,7 @@ function Comment({ comment, isLast, onDelete }: CommentProps) {
           <div className={styles.menu}>
             <IconButton
               icon={faPen}
-              onClick={() => console.log("Clicked to edit")}
+              onClick={() => onEdit(comment.id)}
               variant="secondary"
               dataCy="edit-button"
             />
@@ -43,6 +44,7 @@ function Comment({ comment, isLast, onDelete }: CommentProps) {
             )}
           </div>
         </div>
+
         <p data-cy="comment-message" className={styles.message}>
           {comment.text}
         </p>

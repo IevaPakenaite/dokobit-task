@@ -1,28 +1,35 @@
+import TextareaAutosize from "react-textarea-autosize";
+
 import styles from "./MessageInput.module.scss";
 
 interface MessageInputProps {
   placeholder: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onEnterPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  maxRows?: number;
+  maxLength?: number;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onEnterPress: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 function MessageInput({
   placeholder,
   value,
+  maxRows,
+  maxLength = 280,
   onChange,
   onEnterPress,
 }: MessageInputProps) {
   return (
-    <input
+    <TextareaAutosize
       data-cy="message-input"
       className={styles["message-input"]}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
       onKeyDown={onEnterPress}
-      maxLength={280}
+      maxLength={maxLength}
       autoFocus
+      maxRows={maxRows}
     />
   );
 }
