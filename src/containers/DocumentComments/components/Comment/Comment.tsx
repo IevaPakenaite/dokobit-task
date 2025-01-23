@@ -9,7 +9,7 @@ import styles from "./Comment.module.scss";
 interface CommentProps {
   comment: DokobitDocumentComment;
   isLast: boolean;
-  onDelete: (comment: DokobitDocumentComment) => void;
+  onDelete: () => void;
 }
 
 function Comment({ comment, isLast, onDelete }: CommentProps) {
@@ -36,7 +36,7 @@ function Comment({ comment, isLast, onDelete }: CommentProps) {
             {isLast && (
               <IconButton
                 icon={faTrashCan}
-                onClick={() => onDelete(comment)}
+                onClick={onDelete}
                 variant="secondary"
                 dataCy="delete-button"
               />

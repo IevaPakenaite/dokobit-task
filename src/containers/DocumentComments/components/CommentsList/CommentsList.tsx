@@ -6,7 +6,7 @@ import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel"
 
 interface CommentsListProps {
   comments: DokobitDocumentComment[];
-  onDelete: (comment: DokobitDocumentComment) => void;
+  onDelete: () => void;
 }
 
 function CommentsList({ comments, onDelete }: CommentsListProps) {

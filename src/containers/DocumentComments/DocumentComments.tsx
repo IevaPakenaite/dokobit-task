@@ -17,8 +17,7 @@ function DocumentComments() {
       return dokobitDocumentComments ? JSON.parse(dokobitDocumentComments) : [];
     }
   );
-  const [selectedComment, setSelectedComment] =
-    useState<DokobitDocumentComment | null>(null);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,9 +28,8 @@ function DocumentComments() {
     setComments([...comments, newComment]);
   }
 
-  const openModal = (comment: DokobitDocumentComment) => {
+  const openModal = () => {
     setIsModalOpen(true);
-    setSelectedComment(comment);
   };
 
   const closeModal = () => {
