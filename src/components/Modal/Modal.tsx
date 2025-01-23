@@ -22,9 +22,9 @@ function Modal({
 
   return (
     <div className={styles.modal}>
-      <div className={styles.modal__content}>
+      <div className={styles.content}>
         <div>{children}</div>
-        <div className={styles.modal__footer}>
+        <div className={styles.footer}>
           <button onClick={onClose}>Cancel</button>
           <button className={styles.primary} onClick={onAction}>
             {actionButtonTitle}

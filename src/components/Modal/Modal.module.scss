@@ -1,5 +1,6 @@
 @use "../../scss/variables.scss" as *;
 @use "../../scss/mixins" as *;
+@use "sass:color";
 
 .modal {
   @include fixed(0, null, null, 0);
@@ -11,7 +12,7 @@
   align-items: center;
   z-index: 10;
 
-  &__content {
+  .content {
     background-color: $white;
     padding: 2rem;
     border-radius: 0.8rem;
@@ -19,7 +20,7 @@
     min-width: 40rem;
   }
 
-  &__footer {
+  .footer {
     display: flex;
     justify-content: flex-end;
     margin-top: 2rem;
@@ -41,7 +42,7 @@
         background-color: $orange;
 
         &:hover {
-          background-color: darken($orange, 10%);
+          background-color: color.adjust($orange, $lightness: -10%);
         }
       }
     }

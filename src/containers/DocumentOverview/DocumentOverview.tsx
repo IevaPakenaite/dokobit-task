@@ -3,7 +3,6 @@ import ContentView from "../../components/ContentView";
 import DataDisplayField from "../../components/DataDisplayField";
 import EmptyList from "../../components/EmptyList";
 import { DokobitDocumentMetadata } from "../../models/dokobitDocumentModel";
-import DocumentInfoWrapper from "./components/DocumentInfoWrapper";
 
 function DocumentOverview() {
   const [document, setDocument] = useState<DokobitDocumentMetadata>();
@@ -25,11 +24,9 @@ function DocumentOverview() {
   }
   return (
     <ContentView header="Overview">
-      <DocumentInfoWrapper>
-        <DataDisplayField label="Document owner" value={document.createdBy} />
-        <DataDisplayField label="Creation date" value={document.createdOn} />
-        <DataDisplayField label="Deadline" value={document.deadline} />
-      </DocumentInfoWrapper>
+      <DataDisplayField label="Document owner" value={document.createdBy} />
+      <DataDisplayField label="Creation date" value={document.createdOn} />
+      <DataDisplayField label="Deadline" value={document.deadline} />
     </ContentView>
   );
 }

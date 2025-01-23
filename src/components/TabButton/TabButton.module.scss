@@ -13,10 +13,16 @@
   color: $grey;
   padding: 0;
 
+  .icon-container {
+    position: relative;
+    display: inline-block;
+  }
+
   .icon {
     height: 2.4rem;
     width: 2.4rem;
     padding-bottom: 0.6rem;
+    position: relative;
   }
 
   .label {
@@ -42,5 +48,21 @@
       color: $orange;
       transition: color 0.1s ease-in;
     }
+  }
+
+  .bubble {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: $orange;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.3rem;
+    height: 1.3rem;
   }
 }

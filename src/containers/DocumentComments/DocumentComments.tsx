@@ -3,40 +3,27 @@ import ContentView from "../../components/ContentView";
 import CommentInputBox from "./components/CommentInputBox";
 import EmptyList from "../../components/EmptyList";
 import CommentsList from "./components/CommentsList";
-
-import styles from "./DocumentComments.module.scss";
 import { DokobitDocumentComment } from "../../models/dokobitDocumentModel";
 import Modal from "../../components/Modal";
 
-function DocumentComments() {
-  const [comments, setComments] = useState<DokobitDocumentComment[] | []>(
-    () => {
-      const dokobitDocumentComments = localStorage.getItem(
-        "dokobitDocumentComments"
-      );
-      return dokobitDocumentComments ? JSON.parse(dokobitDocumentComments) : [];
-    }
-  );
+interface DocumentCommentsProps {
+  comments: DokobitDocumentComment[];
+  onAddComment: (comment: DokobitDocumentComment) => void;
+  onUpdateComment: (comment: DokobitDocumentComment) => void;
+  onRemoveComment: () => void;
+}
 
+function DocumentComments({
+  comments,
+  onAddComment,
+  onUpdateComment,
+  onRemoveComment,
+}: DocumentCommentsProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("dokobitDocumentComments", JSON.stringify(comments));
   }, [comments]);
-
-  function handleAddComment(newComment: DokobitDocumentComment) {
-    setComments([...comments, newComment]);
-  }
-
-  function handleUpdateComment(updatedComment: DokobitDocumentComment) {
-    const newList = comments.map((comment) =>
-      comment.id === updatedComment.id
-        ? { ...comment, text: updatedComment.text }
-        : comment
-    );
-
-    setComments(newList);
-  }
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -47,31 +34,33 @@ function DocumentComments() {
   };
 
   function handleRemoveComment() {
-    setComments(comments.slice(0, -1));
+    onRemoveComment();
     closeModal();
   }
 
   return (
-    <ContentView header="Comments">
-      <div className={styles["document-comments"]}>
-        {comments?.length ? (
-          <CommentsList
-            comments={comments}
-            onDelete={openModal}
-            onUpdate={handleUpdateComment}
-          />
-        ) : (
-          <EmptyList
-            message="No comments yet"
-            description="Be the first to add a comment"
-          />
-        )}
+    <ContentView
+      header="Comments"
+      footer={
         <CommentInputBox
           onAddComment={(comment: DokobitDocumentComment) =>
-            handleAddComment(comment)
+            onAddComment(comment)
           }
         />
-      </div>
+      }
+    >
+      {comments?.length ? (
+        <CommentsList
+          comments={comments}
+          onDelete={openModal}
+          onUpdate={onUpdateComment}
+        />
+      ) : (
+        <EmptyList
+          message="No comments yet"
+          description="Be the first to add a comment"
+        />
+      )}
 
       <Modal
         header="Delete comment?"

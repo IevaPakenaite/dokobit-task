@@ -3,8 +3,6 @@ import Comment from "../Comment";
 import CommentEdit from "../CommentEdit";
 import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel";
 
-import styles from "./CommentsList.module.scss";
-
 interface CommentsListProps {
   comments: DokobitDocumentComment[];
   onDelete: () => void;
@@ -34,7 +32,7 @@ function CommentsList({ comments, onDelete, onUpdate }: CommentsListProps) {
   }
 
   return (
-    <div data-cy="comments-list" className={styles["comments-list"]}>
+    <>
       {comments.map((item, index) =>
         item.id === editableComment ? (
           <CommentEdit
@@ -54,7 +52,7 @@ function CommentsList({ comments, onDelete, onUpdate }: CommentsListProps) {
         )
       )}
       <div ref={messagesEndRef} />
-    </div>
+    </>
   );
 }
 

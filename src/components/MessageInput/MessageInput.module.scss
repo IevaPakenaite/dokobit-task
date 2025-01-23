@@ -9,9 +9,10 @@
   background-color: $grey-light;
   resize: none;
   width: -webkit-fill-available;
+  font-family: $font-family;
 
   &.secondary {
     background-color: $white;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 }
