@@ -1,11 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Dokobit frontend assignment</title>
   </head>
+  <script>
+    const dokobitDocumentMetadata = {
+      createdBy: "Vardenis Pavardenis",
+      createdOn: "2020.03.10 12:00",
+      deadline: "2020.03.21 14:00",
+    };
+
+    localStorage.setItem(
+      "dokobitDocumentMetadata",
+      JSON.stringify(dokobitDocumentMetadata)
+    );
+
+    if (!localStorage.getItem("dokobitDocumentComments")) {
+      const dokobitDocumentComments = [];
+
+      localStorage.setItem(
+        "dokobitDocumentComments",
+        JSON.stringify(dokobitDocumentComments)
+      );
+    }
+  </script>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

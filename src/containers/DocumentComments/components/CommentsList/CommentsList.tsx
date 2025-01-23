@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 import Comment from "../Comment/Comment";
 
 import styles from "./CommentsList.module.scss";
+import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel";
 
 interface CommentsListProps {
-  comments: string[];
+  comments: DokobitDocumentComment[];
+  onDelete: (comment: DokobitDocumentComment) => void;
 }
 
-function CommentsList({ comments }: CommentsListProps) {
+function CommentsList({ comments, onDelete }: CommentsListProps) {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -23,8 +25,9 @@ function CommentsList({ comments }: CommentsListProps) {
       {comments.map((item, index) => (
         <Comment
           key={index}
-          message={item}
+          comment={item}
           isLast={comments.length - 1 === index}
+          onDelete={onDelete}
         />
       ))}
       <div ref={messagesEndRef} />

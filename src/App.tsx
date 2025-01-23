@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "./components/Card";
 import Sidebar from "./components/Sidebar";
-import Overview from "./containers/DocumentOverview";
-import Comments from "./containers/DocumentComments";
+import DocumentOverview from "./containers/DocumentOverview";
+import DocumentComments from "./containers/DocumentComments";
 import sidebarMenuButtons, {
   sidebarMenuButtonTypes,
 } from "./constants/sidebarMenuButtons";
@@ -15,9 +15,9 @@ function App() {
   return (
     <Card>
       {selectedView === sidebarMenuButtonTypes.OVERVIEW ? (
-        <Overview />
+        <DocumentOverview />
       ) : (
-        <Comments />
+        <DocumentComments />
       )}
       <Sidebar
         menuOptions={sidebarMenuButtons}

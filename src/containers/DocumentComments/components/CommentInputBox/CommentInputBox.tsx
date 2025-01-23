@@ -1,31 +1,30 @@
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import MessageInput from "../../../../components/MessageInput";
 import IconButton from "../../../../components/IconButton";
 
 import styles from "./CommentInputBox.module.scss";
+import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel";
+import { format } from "date-fns";
 
 interface CommentInputBoxProps {
-  onAddComment: (comment: string) => void;
+  onAddComment: (comment: DokobitDocumentComment) => void;
 }
 
 function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const [newComment, setNewComment] = useState<string>("");
 
   function handleAddComment() {
-    // if (inputRef.current !== null) {
-    //   onAddComment(inputRef.current.value);
-    //   inputRef.current.value = "";
-    //   return;
-    // }
-    // return;
-
     if (!!newComment) {
       const trimmedComment = newComment.trim();
       if (!!trimmedComment) {
-        onAddComment(newComment.trim());
+        onAddComment({
+          id: uuidv4(),
+          addedBy: "Vardenis Pavardenis",
+          addedOn: format(new Date(), "yyyy-MM-dd HH:mm"),
+          text: newComment.trim(),
+        });
       }
       setNewComment("");
       return;
@@ -38,7 +37,6 @@ function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
       e.preventDefault();
 
       if (!!newComment) {
-        // trimText(textareaRef.current.value);
         handleAddComment();
       }
     }
@@ -47,7 +45,6 @@ function CommentInputBox({ onAddComment }: CommentInputBoxProps) {
   return (
     <div data-cy="comment-input-box" className={styles["comment-input-box"]}>
       <MessageInput
-        // ref={inputRef}
         value={newComment}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setNewComment(e.target.value)

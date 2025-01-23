@@ -1,19 +1,18 @@
 import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { format } from "date-fns";
 import IconButton from "../../../../components/IconButton";
 import Avatar from "../../../../components/Avatar";
+import { DokobitDocumentComment } from "../../../../models/dokobitDocumentModel";
 
 import styles from "./Comment.module.scss";
 
 interface CommentProps {
-  message: string;
+  comment: DokobitDocumentComment;
   isLast: boolean;
+  onDelete: (comment: DokobitDocumentComment) => void;
 }
 
-function Comment({ message, isLast }: CommentProps) {
-  const currentTime = format(new Date(), "yyyy-MM-dd HH:mm");
-
+function Comment({ comment, isLast, onDelete }: CommentProps) {
   return (
     <div data-cy="comment" className={styles.comment}>
       <Avatar name="Vardenis" surname="Pavardenis" />
@@ -21,10 +20,10 @@ function Comment({ message, isLast }: CommentProps) {
         <div className={styles.header}>
           <div className={styles.info}>
             <div data-cy="username" className={styles.username}>
-              Vardenis Pavardenis
+              {comment.addedBy}
             </div>
             <div data-cy="timestamp" className={styles.timestamp}>
-              {currentTime}
+              {comment.addedOn}
             </div>
           </div>
           <div className={styles.menu}>
@@ -37,7 +36,7 @@ function Comment({ message, isLast }: CommentProps) {
             {isLast && (
               <IconButton
                 icon={faTrashCan}
-                onClick={() => console.log("Clicked to delete")}
+                onClick={() => onDelete(comment)}
                 variant="secondary"
                 dataCy="delete-button"
               />
@@ -45,7 +44,7 @@ function Comment({ message, isLast }: CommentProps) {
           </div>
         </div>
         <p data-cy="comment-message" className={styles.message}>
-          {message}
+          {comment.text}
         </p>
       </div>
     </div>

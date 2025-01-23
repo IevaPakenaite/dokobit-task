@@ -6,6 +6,7 @@
   align-items: center;
   gap: $spacing;
   margin-top: $spacing * 10;
+  width: -webkit-fill-available;
 
   .icon {
     font-size: 5.4rem;
