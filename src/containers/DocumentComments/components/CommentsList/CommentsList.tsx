@@ -12,10 +12,10 @@ interface CommentsListProps {
 function CommentsList({ comments, onDelete, onUpdate }: CommentsListProps) {
   const [editableComment, setEditableComment] = useState<string>("");
 
-  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const commentsEndRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    commentsEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function CommentsList({ comments, onDelete, onUpdate }: CommentsListProps) {
           />
         )
       )}
-      <div ref={messagesEndRef} />
+      <div ref={commentsEndRef} />
     </>
   );
 }

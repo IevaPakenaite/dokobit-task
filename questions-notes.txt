@@ -1,0 +1,13 @@
+Notes:
+    * Card element did not have set border-radius (cannot find it in figma). Did set up one myself. In reality, I would discuss this with designers, or use the default one.
+    * Designs were missing hover states for: icon button (send comment), sidebar menu buttons, etc. Once again, would talk with designers or would use the default by style guide.
+    * Image handling was not added for Avatar component.
+    * Would need to think about loading states, when getting data from BE. Loader components would need to be created for pages and when posting comments.
+    * Did not implement of comment edit closing, when clicking outside. Can discuss with owners if this is needed.
+    * Did implement change tracking, e.g. if comment was edited before closing, to prevent firing BE call.
+    * Need to investigate how to focus textarea at the end of the string (when editing the comment).
+
+
+Questions:
+    * What does it mean to delete last comment? If I delete the last comment, after that, can I delete second to last? Now I implemented it that way. If need to allow to delete only most recent comment, there would be a need for specific data returned form backend, e.g. flag - canDelete:true.
+    * What would be the comment char limit? This would impact how we display comments. E.g., if we allow long comments, shorter comments should be shown with button ‘show more’.
