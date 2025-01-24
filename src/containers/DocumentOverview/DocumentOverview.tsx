@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContentView from "../../components/ContentView";
 import DataDisplayField from "../../components/DataDisplayField";
 import EmptyList from "../../components/EmptyList";
 import { DokobitDocumentMetadata } from "../../models/dokobitDocumentModel";
 
 function DocumentOverview() {
-  const [document, setDocument] = useState<DokobitDocumentMetadata>();
-
-  useEffect(() => {
-    if (!!localStorage.getItem("dokobitDocumentMetadata")) {
-      const dokobitDocumentMetadata = localStorage.getItem(
-        "dokobitDocumentMetadata"
-      );
-
-      if (!!dokobitDocumentMetadata) {
-        setDocument(JSON.parse(dokobitDocumentMetadata));
-      }
-    }
-  }, []);
+  const [document] = useState<DokobitDocumentMetadata | null>(() => {
+    const dokobitDocumentMetadata = localStorage.getItem(
+      "dokobitDocumentMetadata"
+    );
+    return dokobitDocumentMetadata ? JSON.parse(dokobitDocumentMetadata) : null;
+  });
 
   if (!document) {
     return <EmptyList message="Failed to load document" />;
